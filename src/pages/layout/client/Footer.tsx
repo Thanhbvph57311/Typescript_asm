@@ -7,8 +7,7 @@ const Footer = () => {
           <div>
             <h1 className="text-2xl font-bold text-white">MyShop</h1>
             <p className="mt-3 text-sm text-gray-400">
-              Cửa hàng công nghệ mang đến sản phẩm chất lượng và dịch vụ tốt
-              nhất.
+              Nhìn là thích, dùng là nghiện, giá thì yêu thương
             </p>
           </div>
 
