@@ -17,29 +17,6 @@ const ListProduct = () => {
   const [searchParams] = useSearchParams();
   const keyword = searchParams.get("name_like") || "";
   const limit = 8;
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setLoading(true);
-        let url = `http://localhost:3000/products?_page=${currentPage}&_limit=${limit}`;
-        if (keyword) {
-          url = `http://localhost:3000/products?_page=${currentPage}&_limit=${limit}&name_like=${keyword}`;
-        }
-
-        const { data, headers } = await axios.get(url);
-        setProducts(data);
-        setTotalProducts(Number(headers["x-total-count"] || 0));
-      } catch (error) {
-        console.error("Lỗi khi gọi API:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, [currentPage, keyword]);
-
   const totalPages = Math.ceil(totalProducts / limit);
 
   const handlePageClick = (page: number) => setCurrentPage(page);
@@ -47,69 +24,100 @@ const ListProduct = () => {
   const handleNext = () =>
     currentPage < totalPages && setCurrentPage(currentPage + 1);
 
+  useEffect(() => {
+    let isMounted = true;
+
+    const fetchProducts = async () => {
+      setLoading(true);
+      try {
+        const params = new URLSearchParams({
+          _page: currentPage.toString(),
+          _limit: limit.toString(),
+        });
+        if (keyword) params.append("name_like", keyword);
+
+        const { data, headers } = await axios.get(
+          `http://localhost:3000/products?${params}`
+        );
+        if (isMounted) {
+          setProducts(data);
+          setTotalProducts(Number(headers["x-total-count"] || 0));
+        }
+      } catch (error) {
+        console.error("Lỗi khi gọi API:", error);
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    };
+
+    fetchProducts();
+    return () => {
+      isMounted = false;
+    };
+  }, [currentPage, keyword]);
+
   return (
-    <>
-      <h1 className="font-bold text-red-600 text-3xl text-center py-10 underline">
-        🔥 SẢN PHẨM HOT 🔥
+    <div className="bg-gray-50 min-h-screen pb-20">
+      <h1 className="text-4xl font-extrabold text-center text-red-600 py-10">
+        🛍️ DANH SÁCH SẢN PHẨM
       </h1>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-6">
-        {loading && (
-          <p className="col-span-full text-center text-gray-500">
-            Đang tải sản phẩm...
-          </p>
-        )}
-        {!loading && products.length === 0 && (
-          <p className="col-span-full text-center text-gray-500">
-            Không tìm thấy sản phẩm phù hợp.
-          </p>
-        )}
+      {loading && (
+        <p className="text-center text-gray-500 text-lg">
+          Đang tải sản phẩm...
+        </p>
+      )}
 
+      {!loading && products.length === 0 && (
+        <p className="text-center text-gray-500 text-lg">
+          Không tìm thấy sản phẩm phù hợp.
+        </p>
+      )}
+
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-6">
         {products.map((p) => (
-          <Link
-            to={`/productDetail/${p.id}`}
+          <div
             key={p.id}
-            className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition duration-300 flex flex-col"
+            className="group bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100"
           >
-            {/* Ảnh sản phẩm */}
-            <div className="relative group w-full aspect-square overflow-hidden">
+            <div className="relative overflow-hidden ">
               <img
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                src={`./images/${p.image}`}
+                src={`/images/${p.images}`}
                 alt={p.name}
+                className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500 z-10"
               />
-              <span className="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
-                HOT
+              <span className="absolute top-3 left-3 bg-red-500 text-white text-xs px-3 py-1 rounded-full font-semibold">
+                -15%
               </span>
             </div>
 
-            {/* Nội dung */}
-            <div className="p-4 flex-1 flex flex-col justify-between">
+            <div className="p-5 flex flex-col justify-between h-52">
               <div>
-                <h3 className="font-semibold text-lg text-gray-800 line-clamp-2">
+                <h3 className="text-gray-800 font-semibold text-lg truncate mb-2">
                   {p.name}
                 </h3>
-                <p className="text-red-600 font-bold text-xl mt-2">
-                  ${p.price}
+                <p className="text-red-600 font-bold text-xl mb-3">
+                  ${p.price.toLocaleString()}
                 </p>
               </div>
 
-              <div className="flex justify-between mt-4">
-                <button className="w-[48%] py-2 border border-red-500 text-red-500 rounded-lg hover:bg-red-500 hover:text-white transition font-medium">
-                  Mua ngay
-                </button>
-                <button className="w-[48%] py-2 bg-red-500 text-white rounded-lg hover:bg-white hover:text-red-500 border border-red-500 transition font-medium">
+              <div className="flex gap-3 mt-auto">
+                <Link
+                  to={`/productDetail/${p.id}`}
+                  className="w-1/2 py-2 text-center bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-medium"
+                >
+                  Xem chi tiết
+                </Link>
+                <button className="w-1/2 py-2 border border-red-500 text-red-500 rounded-lg hover:bg-red-500 hover:text-white transition font-medium">
                   Giỏ hàng
                 </button>
               </div>
             </div>
-          </Link>
+          </div>
         ))}
       </div>
-
-      {/* Pagination */}
       {totalProducts > 0 && (
-        <div className="flex justify-center mt-10 gap-2">
+        <div className="flex justify-center mt-12 gap-3">
           <button
             onClick={handlePrev}
             disabled={currentPage === 1}
@@ -122,7 +130,7 @@ const ListProduct = () => {
             <button
               key={page}
               onClick={() => handlePageClick(page)}
-              className={`px-4 py-2 border rounded-lg ${
+              className={`px-4 py-2 border rounded-lg font-medium ${
                 currentPage === page
                   ? "bg-red-600 text-white border-red-600"
                   : "bg-white text-gray-800 hover:bg-gray-100"
@@ -141,7 +149,7 @@ const ListProduct = () => {
           </button>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

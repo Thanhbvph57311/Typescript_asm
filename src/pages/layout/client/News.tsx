@@ -1,5 +1,4 @@
-import Header from "./Header";
-
+import Header from "../../../layout/client/Header";
 const News = () => {
   return <Header />;
 };

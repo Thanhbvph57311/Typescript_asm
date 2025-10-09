@@ -1,4 +1,4 @@
-import Categories from "./Categories";
+import Categories from "../../pages/layout/client/Categories";
 
 const Header = () => {
   return (

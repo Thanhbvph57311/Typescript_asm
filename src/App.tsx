@@ -4,9 +4,11 @@ import Home from "./pages/layout/client/Home";
 import Products from "./pages/layout/client/Products";
 import News from "./pages/layout/client/News";
 import ProductDetail from "./pages/layout/client/ProductDetail";
-import Layout from "./layout/Layout";
+import Layout from "./layout/client/ClientLayout";
 import ColorButton from "./bai6/colorButton";
-
+import LayoutAdmin from "./layout/admin/LayoutAdmin";
+import DashboardManager from "./pages/layout/admin/Dashboard";
+import ProductManager from "./pages/layout/admin/Product";
 
 function App() {
   return (
@@ -19,6 +21,11 @@ function App() {
           <Route path="/news" element={<News />} />
         </Route>
         <Route path="colorButton" element={<ColorButton />} />
+
+        <Route path="/admin" element={<LayoutAdmin />}>
+          <Route index element={<DashboardManager />} />
+          <Route path="product" element={<ProductManager />} />
+        </Route>
       </Routes>
     </>
   );
