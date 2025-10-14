@@ -2,11 +2,10 @@ import { useState } from "react";
 import Button from "./Button";
 
 const MyUseState = () => {
-  // state. setState
   const [count, setCount] = useState<number>(0);
   const handleInc = () => {
     setCount(count + 1); // cach 1
-    setCount((countPrev) => countPrev + 1); // cach 2: truyen call back funtion
+    setCount((countPrev) => countPrev + 1);
   };
 
   return (

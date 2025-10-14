@@ -82,7 +82,7 @@ const ListProduct = () => {
           >
             <div className="relative overflow-hidden ">
               <img
-                src={`/images/${p.images}`}
+                src={`./images/${p.image}`}
                 alt={p.name}
                 className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500 z-10"
               />

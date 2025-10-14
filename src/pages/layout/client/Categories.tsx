@@ -16,7 +16,6 @@ const Categories = () => {
 
   return (
     <nav className="bg-white shadow-md w-full py-4 px-6 flex flex-wrap items-center justify-between border-b border-gray-200">
-      {/* Logo */}
       <div className="flex items-center gap-2">
         <img
           src="/images/iphone17_pro_max.jpg"
@@ -28,7 +27,6 @@ const Categories = () => {
         </h1>
       </div>
 
-      {/* Menu */}
       <ul className="flex flex-wrap items-center gap-4 md:gap-6 font-medium">
         {[
           { path: "/", label: "Trang chủ" },
@@ -51,7 +49,6 @@ const Categories = () => {
         ))}
       </ul>
 
-      {/* Thanh tìm kiếm */}
       <div className="flex items-center gap-2 mt-3 md:mt-0">
         <input
           type="text"

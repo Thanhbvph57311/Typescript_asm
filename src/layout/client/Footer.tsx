@@ -3,7 +3,6 @@ const Footer = () => {
     <footer className="bg-gradient-to-b from-pink-50 to-white text-gray-700 py-10 mt-16 border-t border-pink-200">
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Logo và mô tả */}
           <div>
             <h1 className="text-3xl font-bold text-pink-600">TShop</h1>
             <p className="mt-3 text-sm text-gray-500 leading-relaxed">
@@ -12,7 +11,6 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Navigation */}
           <div>
             <h2 className="text-lg font-semibold text-pink-600 mb-3 border-b-2 border-pink-300 pb-1 inline-block">
               Liên kết
@@ -41,7 +39,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Social */}
           <div>
             <h2 className="text-lg font-semibold text-pink-600 mb-3 border-b-2 border-pink-300 pb-1 inline-block">
               Kết nối
@@ -69,7 +66,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Copyright */}
         <div className="border-t border-pink-200 mt-8 pt-4 text-center text-sm text-gray-500">
           © {new Date().getFullYear()}{" "}
           <span className="text-pink-600 font-semibold">TShop</span>. All rights

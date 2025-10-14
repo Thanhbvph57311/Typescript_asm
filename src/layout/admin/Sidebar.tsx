@@ -6,6 +6,7 @@ import {
   Home,
   Settings,
   HelpCircle,
+  List,
 } from "lucide-react";
 
 const Sidebar = () => {
@@ -90,6 +91,21 @@ const Sidebar = () => {
             </NavLink>
           </li>
 
+          {/* ✅ Thêm CRUD danh mục admin */}
+          <li>
+            <NavLink
+              to="/admin/category"
+              className={({ isActive }) =>
+                `flex items-center gap-3 p-3 rounded-md transition-all duration-200 hover:bg-blue-100 ${
+                  isActive ? "bg-blue-500 text-white" : "text-gray-700"
+                }`
+              }
+            >
+              <List size={20} />
+              {open && "Danh mục (Admin)"}
+            </NavLink>
+          </li>
+
           <li>
             <NavLink
               to="/admin/support"
@@ -106,7 +122,7 @@ const Sidebar = () => {
         </ul>
       </div>
 
-      {/* Footer / Logo */}
+      {/* Footer */}
       <div className="border-t border-gray-200 p-4 text-center">
         {open ? (
           <p className="text-sm text-gray-500">© 2025 TShop Admin</p>

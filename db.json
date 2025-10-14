@@ -4,73 +4,73 @@
       "id": 1,
       "name": "iPhone 15 Pro",
       "price": 1200,
-      "images": "iphone15.jpg"
+      "image": "iphone15.jpg"
     },
     {
       "id": 2,
       "name": "MacBook Air M3",
       "price": 1500,
-      "images": "macBook_ari_m3.jpg"
+      "image": "macBook_ari_m3.jpg"
     },
     {
       "id": 3,
       "name": "AirPods Pro 2",
       "price": 250,
-      "images": "AirPods_pro_2.jpg"
+      "image": "AirPods_pro_2.jpg"
     },
     {
       "id": 4,
       "name": "iPhone 13 pro max",
       "price": 250,
-      "images": "iphone-13_2_2.webp"
+      "image": "iphone-13_2_2.webp"
     },
     {
       "id": 5,
       "name": "iPhone 17 pro 256GB",
       "price": 250,
-      "images": "iphone_17_256gb-3_2.webp"
+      "image": "iphone_17_256gb-3_2.webp"
     },
     {
       "id": 6,
       "name": "iPhone 15 plus",
       "price": 250,
-      "images": "iphone-15-plus_1_.webp"
+      "image": "iphone-15-plus_1_.webp"
     },
     {
       "id": 7,
       "name": "iPhone 16 plus",
       "price": 250,
-      "images": "iphone-16-plus-1.webp"
+      "image": "iphone-16-plus-1.webp"
     },
     {
       "id": 8,
       "name": "iPhone 16 pro max",
       "price": 250,
-      "images": "iphone-16-pro-max_1.webp"
+      "image": "iphone-16-pro-max_1.webp"
     },
     {
       "id": 9,
       "name": "iPhone 14 pro max",
       "price": 250,
-      "images": "iphone-14-pro_2__5.webp"
+      "image": "iphone-14-pro_2__5.webp"
     },
     {
       "id": 10,
       "name": "iPhone 17 pro max",
       "price": 250,
-      "images": "iphone17_pro_max.jpg"
+      "image": "iphone17_pro_max.jpg"
     },
     {
       "id": 11,
       "name": "iPhone 17 pro max",
       "price": 250,
-      "images": "iphone17_pro_max.jpg"
+      "image": "iphone17_pro_max.jpg"
     },
     {
       "id": 12,
       "name": "iPhone 17 pro max",
       "price": 250,
-      "images": "iphone17_pro_max.jpg"
+      "image": "iphone17_pro_max.jpg"
     }
   ],
 

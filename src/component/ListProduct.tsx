@@ -15,7 +15,7 @@ const ListProduct = () => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios.get(`http://localhost:3000/api/coffee`);
+        const { data } = await axios.get(`http://localhost:3000/api/products`);
         setProducts(data.data);
       } catch (error) {
         console.log("Lỗi dữ liệu", error);
