@@ -38,7 +38,6 @@ const ProductManager = () => {
         params,
       });
 
-      // ✅ Tùy backend trả data
       const data = res.data.data || res.data;
       const totalCount = res.data.total || data.length || 0;
 
@@ -64,7 +63,6 @@ const ProductManager = () => {
 
   return (
     <div className="p-6">
-      {/* Bộ lọc */}
       <form
         onSubmit={handleFilter}
         className="flex flex-wrap gap-4 items-center mb-6"
@@ -99,7 +97,6 @@ const ProductManager = () => {
         </button>
       </form>
 
-      {/* Bảng sản phẩm */}
       <div className="overflow-x-auto">
         <table className="border rounded-lg w-full">
           <thead>
@@ -188,7 +185,6 @@ const ProductManager = () => {
         </table>
       </div>
 
-      {/* Phân trang */}
       {totalPages > 1 && (
         <div className="flex justify-center mt-6 gap-3">
           <button
