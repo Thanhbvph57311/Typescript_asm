@@ -26,8 +26,8 @@
     },
     {
       "id": 5,
-      "name": "iPhone 17 pro 256GB",
-      "price": 250,
+      "name": "iPhone 17 pro 256GB sửa",
+      "price": "250",
       "image": "iphone_17_256gb-3_2.webp"
     },
     {
@@ -73,7 +73,6 @@
       "image": "iphone17_pro_max.jpg"
     }
   ],
-
   "users": [
     {
       "id": 1,

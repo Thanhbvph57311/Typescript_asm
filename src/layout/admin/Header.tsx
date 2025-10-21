@@ -2,7 +2,7 @@ import { Bell, Search, User } from "lucide-react";
 
 const Header = () => {
   return (
-    <header className="w-full h-16 bg-white shadow-sm flex items-center justify-between px-6">
+    <header className="w-full h-16 bg-white shadow-sm flex items-center justify-between px-6 relative z-20">
       <div className="flex items-center gap-3">
         <img
           src="/images/iphone17_pro_max.jpg"
